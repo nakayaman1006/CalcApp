@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.IntegerRes
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
         button4.setOnClickListener(this)
+
     }
 
 
@@ -45,7 +47,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("RESULT", result)
             startActivity(intent)
+        } else {
+            Snackbar.make(v, "何か数値を入力してください", Snackbar.LENGTH_INDEFINITE)
+                .setAction("了解") {
+                    Log.d("KADAI", "Snackbarをタップした")
+                }.show()
         }
     }
-
 }
